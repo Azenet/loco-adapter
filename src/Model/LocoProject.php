@@ -40,11 +40,11 @@ final class LocoProject
      * @param string $name
      * @param array  $config
      */
-    public function __construct(string $name, array $config)
+    public function __construct($name, array $config)
     {
         $this->name = $name;
-        $this->apiKey = $config['api_key'] ?? null;
-        $this->indexParameter = $config['index_parameter'] ?? null;
+        $this->apiKey = !empty($config['api_key']) ? $config['api_key'] : null;
+        $this->indexParameter = !empty($config['index_parameter']) ? $config['index_parameter'] : null;
         $this->domains = empty($config['domains']) ? [$name] : $config['domains'];
     }
 
@@ -85,7 +85,7 @@ final class LocoProject
      *
      * @return bool
      */
-    public function hasDomain(string $domain)
+    public function hasDomain($domain)
     {
         return in_array($domain, $this->domains);
     }

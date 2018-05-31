@@ -211,7 +211,7 @@ class Loco implements Storage, TransferableStorage
         }
     }
 
-    private function getProject($domain): LocoProject
+    private function getProject($domain)
     {
         foreach ($this->projects as $project) {
             if ($project->hasDomain($domain)) {
